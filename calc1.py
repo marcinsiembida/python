@@ -32,27 +32,34 @@ while True:
     print("4 - Dzielenie")
     print("5 - Wyjscie")
     
-    choice = int(input("Podaj liczbe: "))
+    try:
+        choice = int(input("Podaj liczbe: "))
+    except ValueError:
+        print("To nie liczba, wprowadz liczbe jeszcze raz")
+        continue
 
     if choice == 5:
         break
-    elif choice > 5:
+    elif choice not in range(1,5):
         print("Wybrales zla liczbe, wybierz jeszcze raz")
-        choice = 0
         continue
     else:
-        user_input1 = int(input("Prosze podac pierwsza liczbe: "))
-        user_input2 = int(input("Prosze podac druga liczbe: "))
+        try:
+            user_input1 = float(input("Prosze podac pierwsza liczbe: "))
+            user_input2 = float(input("Prosze podac druga liczbe: "))
+        except: 
+            print("Prosze wprowadzic liczbe")
+            continue
+
         if choice == 1:
             print(user_input1 + user_input2)
-            break
         elif choice == 2:
             print(user_input1 - user_input2)
-            break
         elif choice == 3:
             print(user_input1 * user_input2)
-            break
         elif choice == 4:
-            print(user_input1 / user_input2)
-            break
+            if user_input2 == 0:
+                print("Nie dzieli sie przez 0")
+            else:
+                print(user_input1 / user_input2)
 print("Do widzenia")
