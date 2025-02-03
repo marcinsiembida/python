@@ -46,9 +46,13 @@ while True:
         if choice == 1:
             print(user_input1 + user_input2)
             break
-    print("Do widzenia")
-
-        
-
-
-
+        elif choice == 2:
+            print(user_input1 - user_input2)
+            break
+        elif choice == 3:
+            print(user_input1 * user_input2)
+            break
+        elif choice == 4:
+            print(user_input1 / user_input2)
+            break
+print("Do widzenia")
