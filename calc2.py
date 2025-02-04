@@ -29,19 +29,19 @@
 #     - `kalkulator()` wykonuje wszystkie operacje w pętli.
 # END
 
-
 def menu():
-    print("Wybierz liczbe ktora odpowiada dzialaniu: ")
-    print("1 - Dodawanie")
-    print("2 - Odejmowanie")
-    print("3 - Mnozenie")
-    print("4 - Dzielenie")
-    print("5 - Wyjscie")
+    print("""
+          1 - Dodawanie
+          2 - Odejmowanie
+          3 - Mnozenie
+          4 - Dzielenie
+          5 - Wyjscie
+          """)
 
 def get_choice_from_user():
     while True:
         try:
-            choice = float(input("Wybierz operacje: "))
+            choice = int(input("Wybierz operacje: "))
         except ValueError:
             print("To nie jest liczba, podaj liczbe jeszcze raz ")
             continue            
@@ -55,12 +55,13 @@ def get_choice_from_user():
             return choice
             
 def get_numbers_from_user():
-    try:
-        x = float(input("Podaj pierwsza liczbe: "))
-        y = float(input("Podaj druga liczbe: "))
-    except ValueError:
-        print("Podaj liczbe, nie tekst")
-    return x, y
+    while True:
+        try:
+            x = float(input("Podaj pierwsza liczbe: "))
+            y = float(input("Podaj druga liczbe: "))
+            return x,y
+        except ValueError:
+            print("Podaj liczbe, nie tekst")
 
 def addition(x,y):
     return x+y
@@ -72,10 +73,7 @@ def multiplication(x,y):
     return x*y
 
 def division(x,y):
-    if y == 0:
-        print("Nie dziel przez zero ")
-    else:
-        return x/y
+    return ("Nie dziel przez zero") if y == 0 else x/y
 
 operations = {
     1: addition,
@@ -89,12 +87,11 @@ def calculate():
     while True:
         choice = get_choice_from_user()
         if choice == 5:
+            print("Do zobaczenia")
             break
-        else:
-            x, y = get_numbers_from_user()
-            result = operations[choice](x,y)
-            print(result)
-            continue
+        x, y = get_numbers_from_user()
+        result = operations[choice](x,y)
+        print(f"Wynik: {result}")
 
 if __name__ == "__main__":
     calculate()
